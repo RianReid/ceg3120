@@ -12,6 +12,7 @@ sudo chmod -x /etc/update-motd.d/50-motd-news
 mkdir -p ~/.vim/pack/vendor/start
 git clone --depth 1 \
   https://github.com/preservim/nerdtree.git \
+<<<<<<< HEAD
   ~/.vim/pack/vendor/start/nerdtree
 
 #Make alias your ally.
@@ -23,3 +24,17 @@ else
 fi
 
 echo 'The user needs to reload .bashrc by running the command "source ~/.bashrc"'
+=======
+    ~/.vim/pack/vendor/start/nerdtree
+
+#Make alias your ally.
+    if [alias aws-ssh 2>/dev/null]; then
+            echo "aws-ssh is not an alias"
+	    alias aws-ssh="ssh -i ceg3120-key.pem ubuntu@54.83.134.218"
+		    else
+		             echo "aws-ssh is set as an alias"
+			     fi
+
+			     echo 'The user needs to reload .bashrc by running the command "source ~/.bashrc"'
+
+>>>>>>> db2e673597a0ebbede94b8601912d39cd2ae621b
