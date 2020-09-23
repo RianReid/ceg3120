@@ -1,0 +1,25 @@
+# /bin/bash
+#
+# Add the script directory to your PATH
+export PATH="$PATH:/home/ubuntu/git/ceg3120/scripts"
+echo 'export PATH="$PATH:/home/ubuntu/git/ceg3120/scripts"' >>~/.profile
+
+#Change the motd to reflect information you are interested in.
+sudo sh -c 'echo "Welcome Back Ubuntu User!!" > /etc/motd'
+sudo chmod -x /etc/update-motd.d/50-motd-news
+
+#Make vim more you. To use nerdtree open vim and enter ":NERDTree" to use it.
+mkdir -p ~/.vim/pack/vendor/start
+git clone --depth 1 \
+  https://github.com/preservim/nerdtree.git \
+  ~/.vim/pack/vendor/start/nerdtree
+
+#Make alias your ally.
+if [alias aws-ssh 2>/dev/null]; then
+	echo "aws-ssh is not an alias"
+        alias aws-ssh="ssh -i ceg3120-key.pem ubuntu@54.83.134.218"
+else   
+	 echo "aws-ssh is set as an alias"
+fi
+
+echo 'The user needs to reload .bashrc by running the command "source ~/.bashrc"'
