@@ -15,8 +15,8 @@ sudo chmod -x /etc/update-motd.d/50-motd-news
 echo "The motd will now greet you with a welcome back message and will no longer display the motd news!"
 
 #Make vim more you. To use nerdtree open vim and enter ":NERDTree" to use it.
-#mkdir -p ~/.vim/pack/vendor/start
-#git clone --depth 1 \ https://github.com/preservim/nerdtree.git \ ~/.vim/pack/vendor/start/nerdtree
+mkdir -p ~/.vim/pack/vendor/start
+git clone --depth 1 \ https://github.com/preservim/nerdtree.git \ ~/.vim/pack/vendor/start/nerdtree
 echo "The VIM plugin NERDTree has been installed. Within VIM enter :NERDTree to use the plugin!"
 
 #Make alias your ally.
