@@ -2,11 +2,11 @@
 
 # Add the script directory to your PATH
 if grep -F 'export PATH="$PATH:/home/ubuntu/ceg3120/scripts"' ~/.profile; then
-echo "The scripts directory has already been added to your path"
+echo "The scripts directory has already been added to your path shown above."
 else
 export PATH="$PATH:/home/ubuntu/ceg3120/scripts"
 echo 'export PATH="$PATH:/home/ubuntu/ceg3120/scripts"' >>~/.profile
-echo "The scripts directory has been added to your path"
+echo "The scripts directory has now been added to your path."
 echo 'The user needs to reload .profile by running the command source ~/.profile'
 fi
 
@@ -24,14 +24,14 @@ echo "The VIM plugin NERDTree has been installed. Within VIM enter :NERDTree to 
 
 #Make alias your ally.
     if grep -F "alias aws-ssh" ~/.bashrc; then
-            echo "aws-ssh is already set as an alias"
+            echo "aws-ssh is already set as an alias shown above."
                     else
-                        echo "aws-ssh is not an alias"
                         echo 'alias aws-ssh="ssh -i ceg3120-key.pem ubuntu@54.83.134.218"' >> ~/.bashrc
+                        echo "aws-ssh has now been set as an alias."
                         echo 'The user needs to reload .bashrc by running the command source ~/.bashrc'
                     fi
 
-   if grep -Fq "alias c" ~/.bashrc; then
+   if grep -F "alias c" ~/.bashrc; then
             echo "c is already set as an alias"
                     else
                         echo 'alias c="clear"' >> ~/.bashrc
