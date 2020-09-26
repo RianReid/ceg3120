@@ -39,3 +39,5 @@ echo "The VIM plugin NERDTree has been installed. Within VIM enter :NERDTree to 
                         echo 'The user needs to reload .bashrc by running the command source ~/.bashrc'
                     fi
 
+echo 'alias -help="This script adds the scripts directory to your path if not there already, greets you with a welcome back message when you log back in, gets rid of the motd news message, adds the NERDTree plugin for use within VIM, and creates an aws-ssh alias for a quick login to the aws, as well as a c alias to make clearing the screen quicker."' >> ~/.bashrc
+
