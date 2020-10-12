@@ -1,9 +1,13 @@
 Git Guide
 
 status - git status
+
 add - git add (name of file)
+
 commit - git commit -m "commit message"
+
 push - git push
+
 pull - git pull
 
 Pull Request: 
