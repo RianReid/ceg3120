@@ -13,3 +13,11 @@ Goal: This project will be using your script from Project 1 to create & resolve 
      - Create issues associated with the feedback given on the rubric.
      - Create a git usage guide called Git-Guide.md in the main folder of your repository
      
+Project 2-1
+
+Goal: The primary deliverable for this project is a changelog that includes the components listed below. You may do this by using GitHub Projects in your class repository or by manually keeping track of changes. Since we will be building from this project, your log should include a date and/or time implemented. You may choose to break up the tasks into their own changelogs. I would get templating then check with me if you have concerns about your changelog. Changelog management includes:
+- A record of changes made over time
+- Justifications
+- Resources used as a template for your installation / configuration
+- Screenshot of the result
+     
