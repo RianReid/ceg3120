@@ -8,5 +8,5 @@
  
 - Added a VPC called 3120VPC
 - VPC ID: vpc-046a30e9545971e64
-  ![screenshot of VPC](
+![screenshot of VPC](screenshots/vpc.png)
 
