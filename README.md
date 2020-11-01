@@ -10,8 +10,8 @@ Goal: Create a script that, once run, will configure your server and user direct
 Project 1 part 2
 
 Goal: This project will be using your script from Project 1 to create & resolve issues via GitHub
-     - Create issues associated with the feedback given on the rubric.
-     - Create a git usage guide called Git-Guide.md in the main folder of your repository
+- Create issues associated with the feedback given on the rubric.
+- Create a git usage guide called Git-Guide.md in the main folder of your repository
      
 Project 2-1
 
