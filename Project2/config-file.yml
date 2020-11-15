@@ -115,21 +115,24 @@ Resources:
         - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
+	  CidrIp: !Ref SSHLocation
           # May be wise to go back to top where SSHLocation "variable" was made
-          CidrIp: !Ref SSHLocation
+          
         - IpProtocol: tcp
           FromPort: '389'
           ToPort: '389'
-	  CidrIp: !Ref SSHLocation
+	  CidrIp: 10.0.0.0/16
+	  
         - IpProtocol: tcp
           FromPort: '80'
           ToPort: '80'
-	  CidrIp: !Ref SSHLocation
+	  CidrIp: 10.0.0.0/16
+	  
         - IpProtocol: tcp
           FromPort: '443'
           ToPort: '443'
+	  CidrIp: 10.0.0.0/16
           # TODO: only leave ones we need.  What subnet is this?
-          CidrIp: !Ref SSHLocation
         - IpProtocol: tcp
           FromPort: '1025'
           ToPort: '2048'
