@@ -214,6 +214,6 @@ Resources:
               vim \
               git \
               wget \
-              python3-dev \
-	      ldap-utils && \
+	      ldap-utils \
+              python3-dev && \
             reboot
