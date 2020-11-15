@@ -176,7 +176,7 @@ Resources:
               git \
               wget \
               python3-dev \
-	      ldap-utils && \
+	      ldap-utils \
             reboot
   UbuntuInstanceOpenLDAP:
     Type: 'AWS::EC2::Instance'
@@ -216,5 +216,5 @@ Resources:
               git \
               wget \
               python3-dev \
-	      ldap-utils && \
+	      ldap-utils \
             reboot
