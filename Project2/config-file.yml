@@ -121,19 +121,6 @@ Resources:
           FromPort: '22'
           ToPort: '22'
           # TODO: only leave ones we need.  What submet is this?
-          CidrIp: 130.108.0.0/16  # WSU CIDR
-        - IpProtocol: tcp
-          FromPort: '1025'
-          ToPort: '2048'
-          CidrIp: !Ref SSHLocation
-        - IpProtocol: tcp
-          FromPort: '1025'
-          ToPort: '2048'
-          CidrIp: 130.108.0.0/16  # WSU CIDR
-        - IpProtocol: -1
-          FromPort: '-1'
-          ToPort: '-1'
-          CidrIp: 10.0.0.0/16
 	  - IpProtocol: tcp
           FromPort: '389'
           ToPort: '389'
