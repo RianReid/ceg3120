@@ -2,13 +2,7 @@ AWSTemplateFormatVersion: 2010-09-09
 Description: >-
   Cloud configuration file for CEG 3120.  This template will build two Ubuntu servers per project package needs.
 Parameters:
-  #No Windows Instances
-  #WS19InstanceType:
-    #Description: Windows Server instance type
-    #Type: String
-    #Default: t2.small
-    #AllowedValues:
-      #- t2.small
+  
   UbuntuInstanceType:
     Description: Ubuntu Server instance type
     Type: String
@@ -17,7 +11,7 @@ Parameters:
       - t2.micro
   KeyName:
     Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
-    Type: 'AWS::EC2::KeyPair::KeyName'
+    Type: 'AWS::EC2::KeyPair::ceg3120-key'
     ConstraintDescription: must be the name of an existing EC2 KeyPair.
   SSHLocation:
     Description: ' The IP address range that can be used to access the EC2 instance'
@@ -25,54 +19,25 @@ Parameters:
     MinLength: '9'
     MaxLength: '18'
     # could restrict to home (note this is just SSH)
-    Default: 0.0.0.0/0
+    Default: 10.0.0.0/16
     AllowedPattern: '(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})/(\d{1,2})'
     ConstraintDescription: must be a valid IP CIDR range of the form x.x.x.x/x.
 Mappings:
   AWSInstanceType2Arch:  # Supported architectures (x64bit only)
-    # only care about micro
-    #t2.small:
-      #Arch: HVM64
-    #t2.small:
-      #Arch: HVM64
     t2.micro:
       Arch: HVM64
-  # All Windows info
-  #AWSRegionWS19: # AMI for Win Server 2019 in each supported region 
-  #  us-east-1:   # N. Virginia
-  #    PV64: NOT_SUPPORTED
-  #    HVM64: ami-0d42fc1154bb95f55
-  #    HVMG2: NOT_SUPPORTED
-  #  us-east-2:   # Ohio
-  #    PV64: NOT_SUPPORTED
-  #    HVM64: NOT_SUPPORTED
-  #    HVMG2: NOT_SUPPORTED
-  #  us-west-1:   # N. California
-  #    PV64: NOT_SUPPORTED
-  #    HVM64: NOT_SUPPORTED
-  #    HVMG2: NOT_SUPPORTED
-  #  us-west-2:   # Oregon
-  #    PV64: NOT_SUPPORTED
-  #    HVM64: NOT_SUPPORTED
-  #    HVMG2: NOT_SUPPORTED
+  
   AWSRegionUbuntu: # AMI for Ubuntu server in each supported region 
     us-east-1:   # N. Virginia
       PV64: NOT_SUPPORTED
       #TODO: is this the AMI we want?
-      HVM64: ami-06c1d7addb12a814e
+      HVM64: ami-0885b1f6bd170450c
       HVMG2: NOT_SUPPORTED
     us-east-2:   # Ohio
       PV64: NOT_SUPPORTED
       HVM64: NOT_SUPPORTED
       HVMG2: NOT_SUPPORTED
-  #  us-west-1:   # N. California
-  #    PV64: NOT_SUPPORTED
-  #    HVM64: NOT_SUPPORTED
-  #    HVMG2: NOT_SUPPORTED
-  #  us-west-2:   # Oregon
-  #    PV64: NOT_SUPPORTED
-  #    HVM64: NOT_SUPPORTED
-  #    HVMG2: NOT_SUPPORTED
+ 
 Resources:
   VPC:
     Type: 'AWS::EC2::VPC'
@@ -131,19 +96,14 @@ Resources:
     DependsOn: AttachGateway
     Properties:
       Domain: vpc
-      InstanceId: !Ref Ubuntu1Instance
+      InstanceId: !Ref UbuntuInstanceGitServer
   Ubuntu2IPAddress:
     Type: 'AWS::EC2::EIP'
     DependsOn: AttachGateway
     Properties:
       Domain: vpc
-      InstanceId: !Ref Ubuntu2Instance
-  #WS19IPAddress:
-  #  Type: 'AWS::EC2::EIP'
-  #  DependsOn: AttachGateway
-  #  Properties:
-  #    Domain: vpc
-  #    InstanceId: !Ref WS19Instance
+      InstanceId: !Ref UbuntuInstanceOpenLDAP
+ 
   # TODO: Setup the security groups needed by our machines
   # SSH, LDAP, HTTP, HTTPS
   LinuxSecurityGroup:
@@ -158,81 +118,27 @@ Resources:
           # May be wise to go back to top where SSHLocation "variable" was made
           CidrIp: !Ref SSHLocation
         - IpProtocol: tcp
-          FromPort: '22'
-          ToPort: '22'
-          # TODO: only leave ones we need.  What submet is this?
-          CidrIp: 130.108.0.0/16  # WSU CIDR
+          FromPort: '389'
+          ToPort: '389'
+	  CidrIp: !Ref SSHLocation
         - IpProtocol: tcp
-          FromPort: '1025'
-          ToPort: '2048'
+          FromPort: '80'
+          ToPort: '80'
+	  CidrIp: !Ref SSHLocation
+        - IpProtocol: tcp
+          FromPort: '443'
+          ToPort: '443'
+          # TODO: only leave ones we need.  What subnet is this?
           CidrIp: !Ref SSHLocation
         - IpProtocol: tcp
           FromPort: '1025'
           ToPort: '2048'
-          CidrIp: 130.108.0.0/16  # WSU CIDR
-        - IpProtocol: -1
-          FromPort: '-1'
-          ToPort: '-1'
           CidrIp: 10.0.0.0/16
-  # Not creating a Windows instance, but this is interesting to look through
-  #   It allows remote desktop port 3389.  Needed if machine required desktop 
-  #   environment for certain interactions
-  # WS19SecurityGroup:
-  #  Type: 'AWS::EC2::SecurityGroup'
-  #  Properties:
-  #    VpcId: !Ref VPC
-  #    GroupDescription: Enable SSH access via port 22 and Remote desktop via port 3389.
-  #    SecurityGroupIngress:
-  #      - IpProtocol: tcp
-  #        FromPort: '22'
-  #        ToPort: '22'
-  #        CidrIp: !Ref SSHLocation
-  #      - IpProtocol: tcp
-  #        FromPort: '22'
-  #        ToPort: '22'
-  #        CidrIp: 130.108.0.0/16  # WSU CIDR
-  #      - IpProtocol: -1
-  #        FromPort: '3389'
-  #        ToPort: '3389'
-  #        CidrIp: 130.108.0.0/16  # WSU CIDR
-  #      - IpProtocol: -1
-  #        FromPort: '3389'
-  #        ToPort: '3389'
-  #        CidrIp: !Ref SSHLocation
-  #      - IpProtocol: -1
-  #        FromPort: '-1'
-  #        ToPort: '-1'
-  #        CidrIp: 10.0.0.0/16
-  #WS19Instance:
-  #  Type: 'AWS::EC2::Instance'
-  #  DependsOn: AttachGateway
-  #  Properties:
-  #    ImageId: !FindInMap 
-  #      - AWSRegionWS19
-  #      - !Ref 'AWS::Region'
-  #      - !FindInMap 
-  #        - AWSInstanceType2Arch
-  #        - !Ref WS19InstanceType
-  #        - Arch
-  #    InstanceType: !Ref WS19InstanceType
-  #    KeyName: !Ref KeyName
-  #    Tags:
-  #      - Key: Application
-  #        Value: !Ref 'AWS::StackId'
-  #      - Key: Name
-  #        Value: CEG 3400 Windows Server 2019
-  #    NetworkInterfaces:
-  #      - GroupSet:
-  #          - !Ref WS19SecurityGroup
-  #        AssociatePublicIpAddress: 'true'
-  #        DeviceIndex: '0'
-  #        DeleteOnTermination: 'true'
-  #        SubnetId: !Ref Subnet
-  #        PrivateIpAddress: 10.0.0.30
+ 
   # Tie an instance to an instance type available in the region
   # TODO: Modify / append the following two instances for our usage
   #   Adjust key / value pairs to reflect systems we are creating
-  Ubuntu1Instance:
+  UbuntuInstanceGitServer:
     Type: 'AWS::EC2::Instance'
     DependsOn: AttachGateway
     Properties:
@@ -249,7 +155,7 @@ Resources:
         - Key: Application
           Value: !Ref 'AWS::StackId'
         - Key: Name
-          Value: CEG 3400 Ubuntu 1
+          Value: Ubuntu Git Server
       NetworkInterfaces:
         - GroupSet:
             - !Ref LinuxSecurityGroup
@@ -270,10 +176,10 @@ Resources:
               git \
               wget \
               python3-dev \
-			  #slapd \
-			  ldap-utils \
+	      #slapd \
+	      ldap-utils && \
             reboot
-  Ubuntu2Instance:
+  UbuntuInstanceOpenLDAP:
     Type: 'AWS::EC2::Instance'
     DependsOn: AttachGateway
     Properties:
@@ -290,7 +196,7 @@ Resources:
         - Key: Application
           Value: !Ref 'AWS::StackId'
         - Key: Name
-          Value: CEG 3400 Ubuntu 2
+          Value: Ubuntu Openldap Server
       NetworkInterfaces:
         - GroupSet:
             - !Ref LinuxSecurityGroup
@@ -310,5 +216,7 @@ Resources:
               vim \
               git \
               wget \
-              python3-dev && \
+              python3-dev \
+	      #slapd \
+	      ldap-utils && \
             reboot
