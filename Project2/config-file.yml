@@ -121,28 +121,28 @@ Resources:
           FromPort: '22'
           ToPort: '22'
           # TODO: only leave ones we need.  What submet is this?
-	  - IpProtocol: tcp
+        - IpProtocol: tcp
           FromPort: '389'
           ToPort: '389'
           CidrIp: 0.0.0.0/0
-	   - IpProtocol: tcp
+        - IpProtocol: tcp
           FromPort: '389'
           ToPort: '389'
-	  - IpProtocol: tcp
+        - IpProtocol: tcp
           FromPort: '80'
           ToPort: '80'
           CidrIp: 0.0.0.0/0
-	   - IpProtocol: tcp
+        - IpProtocol: tcp
           FromPort: '80'
           ToPort: '80'
-	  - IpProtocol: tcp
+        - IpProtocol: tcp
           FromPort: '443'
           ToPort: '443'
           CidrIp: 0.0.0.0/0
-	   - IpProtocol: tcp
+        - IpProtocol: tcp
           FromPort: '443'
           ToPort: '443'
-	  
+          
   # Tie an instance to an instance type available in the region
   # TODO: Modify / append the following two instances for our usage
   #   Adjust key / value pairs to reflect systems we are creating
@@ -222,6 +222,7 @@ Resources:
               vim \
               git \
               wget \
-	      # ldap-utils \
+              ldap-utils \
               python3-dev && \
             reboot
+
