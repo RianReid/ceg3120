@@ -1,0 +1,11 @@
+# /bin/bash
+
+#if [ "$EUID" -ne 0 ]
+##  then 
+      #echo "Please run as root"
+##  else
+      
+##  exit
+##fi
+
+getent group devops || groupadd devops
