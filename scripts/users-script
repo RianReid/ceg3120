@@ -16,6 +16,7 @@ if [ "$EUID" -ne 0 ]
          echo -e "password\npassword" | passwd "$line"
          echo "password"  >> user-info$(date +%Y%m%d%H%M)
          echo "The users password has been set"
+	 chmod g+rwx /home
          
          echo "Check out the user-info file for user information"
 	 echo "Check out /etc/skel/welcome.txt for a welcome message"
