@@ -25,5 +25,6 @@ Project 2-2
 
 Goal: Your goal is to create a Cloud Formation template, a file that creates a VPC and the minimum servers so far 
 - (one git server, one openldap server). 
+
 The CEO has convinced a few developers to join in on the fun! Since the directory service isn't ready for deployment, you are going to write a script that creates users, groups, and gives those users access to certain places.
      
