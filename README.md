@@ -27,4 +27,5 @@ Goal: Your goal is to create a Cloud Formation template, a file that creates a V
 - (one git server, one openldap server). 
 
 The CEO has convinced a few developers to join in on the fun! Since the directory service isn't ready for deployment, you are going to write a script that creates users, groups, and gives those users access to certain places.
-     
+
+- Uses the users-script and users.txt files in the scripts direcrory. Script is run with ./users-script users.txt
