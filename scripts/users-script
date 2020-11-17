@@ -1,11 +1,27 @@
 # /bin/bash
 
-#if [ "$EUID" -ne 0 ]
-##  then 
-      #echo "Please run as root"
-##  else
-      
-##  exit
-##fi
+if [ "$EUID" -ne 0 ]
+  then 
+      echo "Sudo is required, please run as root"
+  else
+      getent group devops || groupadd devops
+     
+      input="$1"
+      while IFS= read -r line
+      do
+	 echo "$line"
+         echo "$line" >> user-info$(date +%Y%m%d%H%M)
+         useradd -G devops "$line"
+	 echo "The user has been created and added to the devops group"
+         echo -e "password\npassword" | passwd "$line"
+         echo "password"  >> user-info$(date +%Y%m%d%H%M)
+         echo "The users password has been set"
+         
+         echo "Check out the user-info file for user information"
+	 echo "Check out /etc/skel/welcome.txt for a welcome message"
+	 
+      done < "$input"
 
-getent group devops || groupadd devops
+      echo "Welcome new user!" >> /etc/skel/welcome.txt
+
+fi
