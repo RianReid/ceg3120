@@ -7,7 +7,7 @@ USE IN THE UBUNTU AWS
 Goal: Create a script that, once run, will configure your server and user directory to your custom preferences. This script will be the only thing to run on a new system. Internal to the script should be any service restarts needed - a user should not need to do any additional action.
 - For the VIM plugin, NERDTree https://github.com/preservim/nerdtree.git
 
-Project 1 part 2
+Project 1-2
 
 Goal: This project will be using your script from Project 1 to create & resolve issues via GitHub
 - Create issues associated with the feedback given on the rubric.
@@ -20,4 +20,10 @@ Goal: The primary deliverable for this project is a changelog that includes the 
 - Justifications
 - Resources used as a template for your installation / configuration
 - Screenshot of the result
+
+Project 2-2
+
+Goal: Your goal is to create a Cloud Formation template, a file that creates a VPC and the minimum servers so far 
+- (one git server, one openldap server). 
+The CEO has convinced a few developers to join in on the fun! Since the directory service isn't ready for deployment, you are going to write a script that creates users, groups, and gives those users access to certain places.
      
