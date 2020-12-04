@@ -171,7 +171,7 @@ Resources:
               apache2 && \
               wget https://raw.githubusercontent.com/pattonsgirl/Fall2020-CEG3120/master/Projects/Project2/index-serv1.html /var/www/html/index.html && \
               echo "Apache1" > /etc/hostname && \
-              echo "pub" >> /home/ubuntu/.ssh/authorized_keys && \
+              echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCSDPoQZ0CqBqzTJfustJjCUc7g8KC3K8BIwJInpKjgG/UNMHl/Sb/QTdLClZXnMmtsjMr9S3C4fXiGyhro3IVZotLs1dos5AfV7q9/bMX2zFqvsc/IjFDZ/MjgdQ432HniHKHYt60e57DI5yJHT832Ik2w9HClFlobWOIrUvuFv4FN0oByC4bcfL7DLgPbAWmZHDdPRT0A0CflfbLT42k4x8xBCM9oBrRKNEqHi2B31nW3AkF0wb3CvbzfTb5mMaAzs4cAA+GD94/TodIOhD9g+yDtfxgE/x3+6HGRTWZJXxSYzVPLn5gGxb09uOTLsgCKtV4cJ29Xvy4FSuoffT7f ceg3120-key" >> /home/ubuntu/.ssh/authorized_keys && \
             reboot
   Ubuntu2Instance:
     Type: 'AWS::EC2::Instance'
@@ -214,7 +214,7 @@ Resources:
               apache2 && \
               wget https://raw.githubusercontent.com/pattonsgirl/Fall2020-CEG3120/master/Projects/Project2/index-serv2.html /var/www/html/index.html && \
               echo "Apache2" > /etc/hostname && \
-              echo "pub" >> /home/ubuntu/.ssh/authorized_keys && \
+              echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCSDPoQZ0CqBqzTJfustJjCUc7g8KC3K8BIwJInpKjgG/UNMHl/Sb/QTdLClZXnMmtsjMr9S3C4fXiGyhro3IVZotLs1dos5AfV7q9/bMX2zFqvsc/IjFDZ/MjgdQ432HniHKHYt60e57DI5yJHT832Ik2w9HClFlobWOIrUvuFv4FN0oByC4bcfL7DLgPbAWmZHDdPRT0A0CflfbLT42k4x8xBCM9oBrRKNEqHi2B31nW3AkF0wb3CvbzfTb5mMaAzs4cAA+GD94/TodIOhD9g+yDtfxgE/x3+6HGRTWZJXxSYzVPLn5gGxb09uOTLsgCKtV4cJ29Xvy4FSuoffT7f ceg3120-key" >> /home/ubuntu/.ssh/authorized_keys && \
             reboot
 Ubuntu3Instance:
     Type: 'AWS::EC2::Instance'
@@ -256,4 +256,5 @@ Ubuntu3Instance:
               python3-dev \
               haproxy && \
               echo "ProxyServer" > /etc/hostname && \
+              echo "frontend http_front bind *:80 stats uri /haproxy?stats default_backend http_back backend http_back balance roundrobin server <Apache1> <10.0.0.30>:80 check server <Apache2> <10.0.0.35>:80 check" >> /etc/haproxy/haproxy.cfg && \ 
             reboot
