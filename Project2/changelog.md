@@ -54,3 +54,30 @@
 - Changed the security rules for my VPC
 - Added inbound rules for ssh, http, https & ldap
 ![screenshot of security rules](screenshots/InstanceSecurity.PNG)
+
+## Changelog Project 2-3
+
+### Stand up proxy server (HAProxy)
+### Stand up two apache servers
+
+### 12/3/2020 6:00pm
+
+- Done withtin the proxy-config.yml in the CloudFormations directory
+![screenshot of 3 servers](screenshots/servers.PNG)
+- Placed index-serv1.html & index-serv2.html on each server using wget command
+- Added a command to change each servers hostname
+- Added the haproxy configurations through wget from the project 2 folder and copied them to /etc/haproxy/haproxy.cfg
+- Also added the sudo systemctl restart haproxy command to automatically restart HAProxy after the configs have been upadted
+- ProxySever Private IP: 10.0.0.30
+- Apache1 Private IP: 10.0.0.20
+- Apache2 Private IP: 10.0.0.25
+
+### Create a private / public key
+
+### 12/3/2020 8:00pm
+
+- Added the public key to each server with an echo command to /home/ubuntu/.ssh/authorized_keys
+- Added the private key to the proxy server with sftp and ran chmod 600 command on the key file to make it more secure
+![screenshot of sftp and chmod](screenshots/sftp.PNG)
+- Evidence of ssh into the Apache1 server from the ProxyServer with the new-key
+![screenshot of ssh into private IP from proxy](screenshots/apache1.PNG)
