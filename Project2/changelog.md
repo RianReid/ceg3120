@@ -87,11 +87,14 @@
 ### 12/3/2020 8:30pm
 
 - Apache1 Server
+
 ![screenshot of Apache1](screenshots/serv1.PNG)
 
 - Apache2 Server
+
 ![screenshot of Apache2](screenshots/serv2.PNG)
 
 - ProxyServer with both index.html files
+
 ![screenshot of ProxyServer](screenshots/proxy1.PNG)
 ![screenshot of ProxyServer](screenshots/proxy2.PNG)
