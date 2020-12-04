@@ -163,7 +163,7 @@ Resources:
           DeviceIndex: '0'
           DeleteOnTermination: 'true'
           SubnetId: !Ref Subnet
-          PrivateIpAddress: 10.0.0.10
+          PrivateIpAddress: 10.0.0.20
       UserData:
         Fn::Base64:
           !Sub |
@@ -208,7 +208,7 @@ Resources:
           DeviceIndex: '0'
           DeleteOnTermination: 'true'
           SubnetId: !Ref Subnet
-          PrivateIpAddress: 10.0.0.15
+          PrivateIpAddress: 10.0.0.25
       UserData:
         Fn::Base64:
           !Sub |
@@ -253,7 +253,7 @@ Resources:
           DeviceIndex: '0'
           DeleteOnTermination: 'true'
           SubnetId: !Ref Subnet
-          PrivateIpAddress: 10.0.0.20
+          PrivateIpAddress: 10.0.0.30
       UserData:
         Fn::Base64:
           !Sub |
@@ -269,6 +269,6 @@ Resources:
               haproxy && \
               sudo echo "ProxyServer" > /etc/hostname && \
               sudo chown ubuntu /etc/haproxy/haproxy.cfg && \
-              #not sure how to append the below config file stuff line by line, I tried to wget it from my github but it didn't work
-              #echo "frontend http_front bind *:80 stats uri /haproxy?stats default_backend http_back backend http_back balance roundrobin server Apache1 10.0.0.10:80 check server Apache2 10.0.0.15:80 check" >> /etc/haproxy/haproxy.cfg && \ 
+              wget https://raw.githubusercontent.com/pattonsgirl/Fall2020-CEG3120/master/Projects/Project2/haproxy.cfg && \
+              cp haproxy.cfg /etc/haproxy/haproxy.cfg && \
             reboot
