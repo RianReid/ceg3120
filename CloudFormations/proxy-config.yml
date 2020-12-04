@@ -224,7 +224,7 @@ Resources:
               echo "Apache2" > /etc/hostname && \
               echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCSDPoQZ0CqBqzTJfustJjCUc7g8KC3K8BIwJInpKjgG/UNMHl/Sb/QTdLClZXnMmtsjMr9S3C4fXiGyhro3IVZotLs1dos5AfV7q9/bMX2zFqvsc/IjFDZ/MjgdQ432HniHKHYt60e57DI5yJHT832Ik2w9HClFlobWOIrUvuFv4FN0oByC4bcfL7DLgPbAWmZHDdPRT0A0CflfbLT42k4x8xBCM9oBrRKNEqHi2B31nW3AkF0wb3CvbzfTb5mMaAzs4cAA+GD94/TodIOhD9g+yDtfxgE/x3+6HGRTWZJXxSYzVPLn5gGxb09uOTLsgCKtV4cJ29Xvy4FSuoffT7f ceg3120-key" >> /home/ubuntu/.ssh/authorized_keys && \
             reboot
-Ubuntu3Instance:
+  Ubuntu3Instance:
     Type: 'AWS::EC2::Instance'
     DependsOn: AttachGateway
     Properties:
