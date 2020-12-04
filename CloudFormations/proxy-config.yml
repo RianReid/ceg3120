@@ -271,4 +271,5 @@ Resources:
               sudo chown ubuntu /etc/haproxy/haproxy.cfg && \
               wget https://raw.githubusercontent.com/pattonsgirl/Fall2020-CEG3120/master/Projects/Project2/haproxy.cfg && \
               cp haproxy.cfg /etc/haproxy/haproxy.cfg && \
+              sudo systemctl restart haproxy && \
             reboot
