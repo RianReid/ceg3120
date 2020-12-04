@@ -103,6 +103,12 @@ Resources:
     Properties:
       Domain: vpc
       InstanceId: !Ref Ubuntu2Instance
+  Ubuntu3IPAddress:
+    Type: 'AWS::EC2::EIP'
+    DependsOn: AttachGateway
+    Properties:
+      Domain: vpc
+      InstanceId: !Ref Ubuntu3Instance
  
   # TODO: Setup the security groups needed by our machines
   # SSH, LDAP, HTTP, HTTPS
