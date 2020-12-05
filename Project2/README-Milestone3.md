@@ -96,15 +96,22 @@
 
 ![screenshot of git remote add 2](screenshots/mastersite1adds.PNG)
 
-- Now I can run a git push Apache2 and also push the index.html file to the Apache2 server.
+- Now I can do git push Apache2 and push the new index.html file to the Apache2 server.
+- The Apache2 index.html before the push
 
 ![screenshot of Apache2 before](screenshots/before.PNG)
 
+- The Apache2 index.html after the push
+
 ![screenshot of Apache2 after](screenshots/after.PNG)
+
+- The HAProxy server with the new index.html after both the pushes
 
 ![screenshot of proxy after](screenshots/afterproxy.PNG)
 
 ### Hook Automation
+
+### 12/4/2020 4:00pm
 
 - For the hook automation I added commands to my proxy-config.yml file to create a bare repo on each Apache server
 - A command to wget hooky from the Project 2 folder and copy it to the post-receive file within mastersite
