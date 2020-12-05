@@ -183,10 +183,10 @@ Resources:
               sudo echo "Apache1" > /etc/hostname && \
               echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCK6KfMJLPHRo2O2wjAg1AQn+uN6BbbbkYmd4ZhUYwCWjjixbMuJ0rSwPF2Ss0DNu1/6jrx17jAoq290SxA22HRnPUMeUHoWfTK/oxIfMCnnRbjJx3dR8NIXYLP7vOtoWEhHBAGfT1vAXR2Zz2tstPXUcBpSRNy/9bZrzhMDjfdNrMqEuJqP5WeC0MmlnpREVhVSaQzpi+l9O8XjMa9FwUlQ8oaq9gkzeOplg25pfjgCW3crGEweskFhqXzuT199PCCnex+WIuBSF4Bx6KUxEIQbJ6e1a8C4wsdCsR9fMOD1zKwhosvlTjdYkcvNvGk0+Dbkim5CyJpQZxQlhTWV+RZ new-key" >> /home/ubuntu/.ssh/authorized_keys && \
               #attempt at hook automation below
-              git init --bare mastersite && \
+              #git init --bare mastersite && \
               wget https://raw.githubusercontent.com/pattonsgirl/Fall2020-CEG3120/master/Projects/Project2/hooky && \
-              cp hooky /home/ubuntu/mastersite/hooks/post-receive && \
-              sudo chmod a+x /home/ubuntu/mastersite/hooks/post-receive && \
+              #cp hooky /home/ubuntu/mastersite/hooks/post-receive && \
+              #sudo chmod a+x /home/ubuntu/mastersite/hooks/post-receive && \
             reboot
   Ubuntu2Instance:
     Type: 'AWS::EC2::Instance'
@@ -233,10 +233,10 @@ Resources:
               sudo echo "Apache2" > /etc/hostname && \
               echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCK6KfMJLPHRo2O2wjAg1AQn+uN6BbbbkYmd4ZhUYwCWjjixbMuJ0rSwPF2Ss0DNu1/6jrx17jAoq290SxA22HRnPUMeUHoWfTK/oxIfMCnnRbjJx3dR8NIXYLP7vOtoWEhHBAGfT1vAXR2Zz2tstPXUcBpSRNy/9bZrzhMDjfdNrMqEuJqP5WeC0MmlnpREVhVSaQzpi+l9O8XjMa9FwUlQ8oaq9gkzeOplg25pfjgCW3crGEweskFhqXzuT199PCCnex+WIuBSF4Bx6KUxEIQbJ6e1a8C4wsdCsR9fMOD1zKwhosvlTjdYkcvNvGk0+Dbkim5CyJpQZxQlhTWV+RZ new-key" >> /home/ubuntu/.ssh/authorized_keys && \
               #attempt at hook automation below
-              git init --bare mastersite && \
+              #git init --bare mastersite && \
               wget https://raw.githubusercontent.com/pattonsgirl/Fall2020-CEG3120/master/Projects/Project2/hooky && \
-              cp hooky /home/ubuntu/mastersite/hooks/post-receive && \
-              sudo chmod a+x /home/ubuntu/mastersite/hooks/post-receive && \
+              #cp hooky /home/ubuntu/mastersite/hooks/post-receive && \
+              #sudo chmod a+x /home/ubuntu/mastersite/hooks/post-receive && \
             reboot
   Ubuntu3Instance:
     Type: 'AWS::EC2::Instance'
