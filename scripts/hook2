@@ -1,4 +1,6 @@
 #!/bin/bash
+#I ideally would've used two different hook scripts for both of my webservers, but since our accounts are private I just wget the hooky one from yor Project 2 folder.
+#So in order to automate adding the hook script to post-receive it will output the same for both.
 TARGET="/var/www/html/"
 GIT_DIR="/home/ubuntu/mastersite2"
 BRANCH="master"
