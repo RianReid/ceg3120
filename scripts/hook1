@@ -1,6 +1,6 @@
 #!/bin/bash
 TARGET="/var/www/html/"
-GIT_DIR="/home/ubuntu/git/ceg3120"
+GIT_DIR="/home/ubuntu/mastersite1"
 BRANCH="master"
 
 echo "Kicking off post-receive from 10.0.0.20 - Apache1"
